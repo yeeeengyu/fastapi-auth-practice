@@ -7,5 +7,6 @@ requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.121.1",
     "jinja2>=3.1.6",
+    "ultralytics>=8.3.228",
     "uvicorn[standard]>=0.38.0",
 ]

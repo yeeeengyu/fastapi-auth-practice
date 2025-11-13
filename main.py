@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from utils.reqs import Request
+from utils.reqs import LoginRequest
 
 app = FastAPI()
 TEMPLATES = Jinja2Templates(directory="templates")
@@ -17,7 +17,7 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return FileResponse("static/index.html")
+    return FileResponse("index.html")
 
 @app.get("/register", response_class=HTMLResponse)
 def register():
@@ -32,5 +32,6 @@ def mypage():
     return FileResponse("templates/checkpage.html")
 
 @app.post("/register/check")
-async def registercheck(request: Request):
-    pass # 여기서부터 짜면댈듯
+async def registercheck(request: LoginRequest):
+    id = request.id
+    
